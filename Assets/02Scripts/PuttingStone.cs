@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class PuttingStone : MonoBehaviour
 {
-    Vector3 mousePos;
-    float offsetX;
-    float offsetY;
+    public Vector3 mousePos;
+    public float offsetX;
+    public float offsetY;
     public GameObject stone_B,stone_W;
     public Camera cam;
     RaycastHit2D hit;
     int layerMask;
-    int BlackOrWhite;
+    public int BlackOrWhite;
     public RuleCheck rule;
+    public bool put;
     void Start()
     {
         
@@ -32,9 +33,9 @@ public class PuttingStone : MonoBehaviour
             offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
             Vector3 bulidPos = new Vector3((int)mousePos.x + offsetX, (int)mousePos.y + offsetY);
             //건물 건설
-            GameObject structure = Instantiate(BlackOrWhite == 0? stone_B : stone_W, bulidPos, stone_B.transform.rotation);
-            rule.checkerboard[(int)((int)mousePos.y + offsetY + 8.5f),(int)((int)mousePos.x + offsetX + 8.5f)] = BlackOrWhite;
-            BlackOrWhite = BlackOrWhite == 0 ? 1 : 0;
+            GameObject structure = Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, bulidPos, stone_B.transform.rotation);
+            rule.checkerboard[(int)((int)mousePos.y + offsetY + 8.5f),(int)((int)mousePos.x + offsetX + 8.5f)] = BlackOrWhite + 1;
+            put = true;
         }
     }
 }

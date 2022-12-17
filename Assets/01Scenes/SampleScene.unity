@@ -152,10 +152,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b962c0b21cfd0408a86e34a4555fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stone_B: {fileID: 2650139299791435981, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
-  stone_W: {fileID: 8778603656944419101, guid: 4d1a9e9a925f7454b94cff7d7c122663, type: 3}
+  mousePos: {x: 0, y: 0, z: 0}
+  offsetX: 0
+  offsetY: 0
+  stone_B: {fileID: 8778603656944419101, guid: 4d1a9e9a925f7454b94cff7d7c122663, type: 3}
+  stone_W: {fileID: 2650139299791435981, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
   cam: {fileID: 519420031}
+  BlackOrWhite: 0
   rule: {fileID: 1318338042}
+  put: 0
 --- !u!4 &185009029
 Transform:
   m_ObjectHideFlags: 0
@@ -296,6 +301,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 047f9eb2cf73b4a4680cb0206e3bacd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  putting: {fileID: 185009028}
+  Win: 0
 --- !u!1 &1777461767
 GameObject:
   m_ObjectHideFlags: 0
