@@ -175,7 +175,10 @@ public class Skills : MonoBehaviour
                     stone.au.clip = stone.skillM[3];
                     stone.au.Play();
                     stone.buildPos = skill4Hit.collider.transform.position;
-                    rule.isblack = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 0;
+                    rule.isblack = skill4Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    nextTrun();
+                    stone.buildPos = hit.collider.transform.position;
+                    rule.isblack = hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
                     nextTrun();
                 }
                 else
