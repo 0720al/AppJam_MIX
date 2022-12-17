@@ -169,6 +169,7 @@ MonoBehaviour:
   timeFlow: 30
   skillM: []
   au: {fileID: 0}
+  GoldGee: {fileID: 0}
 --- !u!4 &86830198
 Transform:
   m_ObjectHideFlags: 0
