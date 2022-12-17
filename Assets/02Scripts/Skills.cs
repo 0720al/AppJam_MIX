@@ -112,6 +112,10 @@ public class Skills : MonoBehaviour
                     stone.au.clip = stone.skillM[0];
                     stone.au.Play();
                 }
+                else
+                {
+                    return;
+                }
                 
                 nextTrun();
             }
@@ -126,6 +130,10 @@ public class Skills : MonoBehaviour
                     stone.au.clip = stone.skillM[1];
                     stone.au.Play();
                 }
+                else
+                {
+                    return;
+                }
                 nextTrun();
             }
             if (skill3 && hit.collider.gameObject == gameObject)
@@ -138,6 +146,10 @@ public class Skills : MonoBehaviour
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
                     stone.au.clip = stone.skillM[2];
                     stone.au.Play();
+                }
+                else
+                {
+                    return;
                 }
                 nextTrun();
             }
@@ -152,6 +164,10 @@ public class Skills : MonoBehaviour
                     rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
                     stone.au.clip = stone.skillM[3];
                     stone.au.Play();
+                }
+                else
+                {
+                    return;
                 }
                 nextTrun();
             }
