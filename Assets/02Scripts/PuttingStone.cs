@@ -23,6 +23,7 @@ public class PuttingStone : MonoBehaviour
     public float timeFlow = 30;
     public AudioClip[] skillM;
     public AudioSource au;
+    public GameObject GoldGee;
     void Start()
     {
         
