@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RuleCheck : MonoBehaviour
 {
@@ -50,7 +51,14 @@ public class RuleCheck : MonoBehaviour
                 if(j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
-                    Debug.Log(Win);
+                    if (Win == 0)
+                    {
+                        SceneManager.LoadScene("BlackWin");
+                    }
+                    else if (Win == 1)
+                    {
+                        SceneManager.LoadScene("WhiteWin");
+                    }
                     break;
                 }
             }
@@ -77,7 +85,14 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
-                    Debug.Log(Win);
+                    if (Win == 0)
+                    {
+                        SceneManager.LoadScene("BlackWin");
+                    }
+                    else if (Win == 1)
+                    {
+                        SceneManager.LoadScene("WhiteWin");
+                    }
                     break;
                 }
             }
@@ -104,7 +119,14 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
-                    Debug.Log(Win);
+                    if (Win == 0)
+                    {
+                        SceneManager.LoadScene("BlackWin");
+                    }
+                    else if (Win == 1)
+                    {
+                        SceneManager.LoadScene("WhiteWin");
+                    }
                     break;
                 }
             }
@@ -131,7 +153,14 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
-                    Debug.Log(Win);
+                    if(Win == 0)
+                    {
+                        SceneManager.LoadScene("BlackWin");
+                    }
+                    else if(Win == 1)
+                    {
+                        SceneManager.LoadScene("WhiteWin");
+                    }
                     break;
                 }
             }
