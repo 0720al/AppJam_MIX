@@ -12,6 +12,7 @@ public class PuttingStone : MonoBehaviour
     RaycastHit2D hit;
     int layerMask;
     int BlackOrWhite;
+    public RuleCheck rule;
     void Start()
     {
         
@@ -33,6 +34,7 @@ public class PuttingStone : MonoBehaviour
             Vector3 bulidPos = new Vector3((int)mousePos.x + offsetX, (int)mousePos.y + offsetY);
             //건물 건설
             GameObject structure = Instantiate(BlackOrWhite == 0? stone_B : stone_W, bulidPos, stone_B.transform.rotation);
+            rule.checkerboard[(int)((int)mousePos.y + offsetY + 8.5f),(int)((int)mousePos.x + offsetX + 8.5f)] = BlackOrWhite;
             BlackOrWhite = BlackOrWhite == 0 ? 1 : 0;
         }
     }
