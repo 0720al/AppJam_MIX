@@ -27,7 +27,6 @@ public class PuttingStone : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && !hit)
         {
-
             offsetX = mousePos.x >= 0 ? 0.5f : -0.5f;
             offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
             Vector3 bulidPos = new Vector3((int)mousePos.x + offsetX, (int)mousePos.y + offsetY);
