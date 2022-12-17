@@ -25,6 +25,8 @@ public class PuttingStone : MonoBehaviour
     public AudioSource au;
     public GameObject GoldGee;
     public GameObject green;
+    public int blackCnt;
+    public int WhiteCnt;
     void Start()
     {
         

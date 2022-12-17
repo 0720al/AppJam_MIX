@@ -9,7 +9,7 @@ public class Skills : MonoBehaviour
     public RuleCheck rule;
     public float offsetX;
     public float offsetY;
-    public int cnt;
+
     GameObject semiC;
     bool skill1;
     bool skill2;
@@ -38,6 +38,30 @@ public class Skills : MonoBehaviour
         //ShowSkills();
         StoneDetecte();
         //Rays();
+        if (stone.BlackOrWhite == 0)
+        {
+            if (stone.blackCnt != 0)
+            {
+                stone.GoldGee.SetActive(true);
+            }
+            else
+            {
+                stone.GoldGee.SetActive(false);
+            }
+
+        }
+        else if (stone.BlackOrWhite == 1)
+        {
+            if (stone.WhiteCnt != 0)
+            {
+                stone.GoldGee.SetActive(true);
+            }
+            else
+            {
+                stone.GoldGee.SetActive(false);
+            }
+
+        }
     }
     void InputManager()
     {
@@ -47,26 +71,6 @@ public class Skills : MonoBehaviour
         skill3 = Input.GetKeyDown(KeyCode.Alpha3);
         skill4 = Input.GetKeyDown(KeyCode.Alpha4);
         skill5 = Input.GetKeyDown(KeyCode.Alpha5);
-    }
-    void ShowSkills()
-    {
-        Vector3 semiCirclePos = transform.position + new Vector3(0, 1f, 0);
-        if (cnt == 0)
-        {
-            if (rightMouse)
-            {
-                semiC = Instantiate(semiCircle, semiCirclePos, transform.rotation);
-                cnt++;
-            }
-        }
-        else if (cnt == 1)
-        {
-            if (rightMouse)
-            {
-                Destroy(semiC);
-                cnt--;
-            }
-        }
     }
     void nextTrun()
     {
@@ -151,7 +155,7 @@ public class Skills : MonoBehaviour
                 }
                 nextTrun();
             }
-            if (skill5 && hit.collider.gameObject == gameObject && cnt == 0)
+            if (skill5 && hit.collider.gameObject == gameObject && stone.blackCnt == 0 && stone.BlackOrWhite == 0 || skill5 && hit.collider.gameObject == gameObject && stone.WhiteCnt == 0 && stone.BlackOrWhite == 1)
             {
                 Instantiate(UmmYang,transform.position,UmmYang.transform.rotation);
                 stone.au.clip = stone.skillM[4];
@@ -164,11 +168,17 @@ public class Skills : MonoBehaviour
                         rule.checkerboard[(int)((int)skill5Hit.collider.transform.position.y + 8.5f), (int)((int)skill5Hit.collider.transform.position.x + 8.5f)] = 0;
                         Instantiate(Disappear.gameObject, skill5Hit.transform.position, Disappear.transform.rotation);
                         Destroy(skill5Hit.collider.gameObject);
-                        cnt++;
                     }
                 }
+                if(stone.BlackOrWhite == 0)
+                {
+                    stone.blackCnt++;
+                }
+                else
+                {
+                    stone.WhiteCnt++;
+                }
                 stone.GoldGee.SetActive(true);
-
                 nextTrun();
             }
         }
