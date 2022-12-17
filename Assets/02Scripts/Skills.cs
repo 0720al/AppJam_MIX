@@ -221,15 +221,15 @@ public class Skills : MonoBehaviour
     IEnumerator SKillBlink(int i)
     {
         stone.skillImgs[i].gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(false);
     }
 }
