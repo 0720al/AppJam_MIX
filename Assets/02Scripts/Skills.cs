@@ -28,7 +28,7 @@ public class Skills : MonoBehaviour
     {
         InputManager();
         //ShowSkills();
-        Rays();
+        //Rays();
         Skill();
     }
     void InputManager()

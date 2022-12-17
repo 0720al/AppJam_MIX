@@ -50,6 +50,7 @@ public class RuleCheck : MonoBehaviour
                 if(j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Debug.Log(Win);
                     break;
                 }
             }
@@ -76,6 +77,7 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Debug.Log(Win);
                     break;
                 }
             }
@@ -102,6 +104,7 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Debug.Log(Win);
                     break;
                 }
             }
@@ -128,6 +131,7 @@ public class RuleCheck : MonoBehaviour
                 if (j == 5)
                 {
                     Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Debug.Log(Win);
                     break;
                 }
             }
