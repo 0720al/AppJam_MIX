@@ -19,6 +19,8 @@ public class PuttingStone : MonoBehaviour
     public Text trunOrder;
     public Vector3 buildPos;
     public bool put;
+    public Slider timeLimit;
+    float timeFlow = 30;
     void Start()
     {
         
@@ -28,10 +30,18 @@ public class PuttingStone : MonoBehaviour
     void Update()
     {
         beforeConfirmed();
+        TimeLimit();
     }
     void TimeLimit()
     {
-
+        timeLimit.transform.GetChild(0).GetComponent<Image>().color = BlackOrWhite == 0 ? Color.white : Color.black;
+        timeLimit.transform.GetChild(1).transform.GetChild(0).GetComponent<Image>().color = BlackOrWhite == 0 ? Color.black : Color.white;
+        timeFlow -= Time.deltaTime;
+        timeLimit.value =  1 - ((30 - timeFlow) / 30);
+        if (timeLimit.value <= 0)
+            timeLimit.transform.GetChild(1).gameObject.SetActive(false);
+        else
+            timeLimit.transform.GetChild(1).gameObject.SetActive(true);
     }
     void beforeConfirmed()
     {
@@ -61,7 +71,8 @@ public class PuttingStone : MonoBehaviour
             Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
             rule.checkerboard[(int)(buildPos.y + 8.5f), (int)(buildPos.x + 8.5f)] = BlackOrWhite + 1;
             trunOrder.text = trunOrder.text == "검은 돌" ? "흰 돌" : "검은 돌";
-            
+            trunOrder.color = BlackOrWhite == 0 ? Color.white : Color.black;
+            timeFlow = 30;
             putAble = false;
         }
 
