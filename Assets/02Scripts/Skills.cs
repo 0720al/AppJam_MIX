@@ -12,7 +12,13 @@ public class Skills : MonoBehaviour
     int curY;
     public int cnt;
     GameObject semiC;
-    RaycastHit hit;
+    public RaycastHit hit;
+    bool skill1;
+    bool skill2;
+    bool skill3;
+    bool skill4;
+    public Camera cam;
+    
     void Start()
     {
         
@@ -21,16 +27,21 @@ public class Skills : MonoBehaviour
     void Update()
     {
         InputManager();
-        ShowSkills();
-        CurPos();
+        //ShowSkills();
+        Rays();
+        Skill();
     }
     void InputManager()
     {
         rightMouse = Input.GetKeyDown(KeyCode.Mouse1);
+        skill1 = Input.GetKeyDown(KeyCode.Alpha1);
+        skill2 = Input.GetKeyDown(KeyCode.Alpha2);
+        skill3 = Input.GetKeyDown(KeyCode.Alpha3);
+        skill4 = Input.GetKeyDown(KeyCode.Alpha3);
     }
     void ShowSkills()
     {
-        Vector3 semiCirclePos = transform.position + new Vector3(0, 1.5f, 0);
+        Vector3 semiCirclePos = transform.position + new Vector3(0, 1f, 0);
         if (cnt == 0)
         {
             if (rightMouse)
@@ -48,33 +59,56 @@ public class Skills : MonoBehaviour
             }
         }
     }
-    void CurPos()
+    void Rays()
     {
         Debug.DrawRay(transform.position, Vector2.up, Color.red);
         Debug.DrawRay(transform.position, Vector2.down, Color.red);
         Debug.DrawRay(transform.position, Vector2.left, Color.red);
         Debug.DrawRay(transform.position, Vector2.right, Color.red);
-        curX = (int)((int)stone.mousePos.x + stone.offsetX + 8.5f);
-        curY = (int)((int)stone.mousePos.y + stone.offsetY + 8.5f);
-    }
-    public void Skill1()
-    {
-        if(Physics.Raycast(transform.position, Vector2.up, out hit, 1))
+        Ray selectStone = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit rayHit;
+        if(Physics.Raycast(selectStone, out hit, 100))
         {
-            hit.transform.position += new Vector3(0, 1, 0);
+
         }
-        Destroy(semiCircle);
     }
-    public void Skill2()
+    void Skill()
     {
-
-    }
-    public void Skill3()
-    {
-
-    }
-    public void Skill4()
-    {
-
-    }
+        if(skill1)
+        {
+            Debug.Log("1");
+            if(Physics.Raycast(transform.position, Vector2.up, out hit, 1))
+            {
+                hit.collider.transform.position += new Vector3(0, 1, 0);
+                Debug.Log("111");
+            }
+        }
+        if(skill2)
+        {
+            Debug.Log("2");
+            if(Physics.Raycast(transform.position, Vector2.down, out hit, 1))
+            {
+                hit.collider.transform.position += new Vector3(0, -1, 0);
+                Debug.Log("222");
+            }    
+        }
+        if(skill3)
+        {
+            Debug.Log("3");
+            if(Physics.Raycast(transform.position, Vector2.right, out hit, 1))
+            {
+                hit.collider.transform.position += new Vector3(-2, 0, 0);
+                Debug.Log("333");
+            }
+        }
+        if (skill4)
+        {
+            Debug.Log("4");
+            if (Physics.Raycast(transform.position, Vector2.up, out hit, 1))
+            {
+                hit.collider.transform.position += new Vector3(0, -2, 0);
+                Debug.Log("444");
+            }
+        }
+    }   
 }
