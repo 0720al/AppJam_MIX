@@ -16,6 +16,7 @@ public class PuttingStone : MonoBehaviour
     GameObject stone;
     Vector3 buildPos;
     public Text trunOrder;
+    bool putAble = false;
     void Start()
     {
         
@@ -33,6 +34,7 @@ public class PuttingStone : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Mouse0) && !hit && !(mousePos.x > 9.5f || mousePos.x < -8.5 || mousePos.y > 9.5 || mousePos.y < -8.5))
         {
+            putAble = true;
             GameObject.Destroy(stone);
             offsetX = mousePos.x >= 0 ? 0.5f : -0.5f;
             offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
@@ -45,10 +47,14 @@ public class PuttingStone : MonoBehaviour
     }
     public void posConfirmed()
     {
-        GameObject.Destroy(stone);
-        Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
-        rule.checkerboard[(int)(buildPos.y + 8.5f), (int)(buildPos.x + 8.5f)] = BlackOrWhite + 1;
-        trunOrder.text = trunOrder.text == "Black" ? "White" : "Black";
-        BlackOrWhite = BlackOrWhite == 0 ? 1 : 0;
+        if (putAble) {
+            GameObject.Destroy(stone);
+            Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
+            rule.checkerboard[(int)(buildPos.y + 8.5f), (int)(buildPos.x + 8.5f)] = BlackOrWhite + 1;
+            trunOrder.text = trunOrder.text == "Black" ? "White" : "Black";
+            BlackOrWhite = BlackOrWhite == 0 ? 1 : 0;
+            putAble = false;
+        }
+
     }
 }
