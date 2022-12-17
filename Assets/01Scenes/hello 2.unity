@@ -638,6 +638,8 @@ MonoBehaviour:
   put: 0
   timeLimit: {fileID: 980277635}
   timeFlow: 30
+  skillM: []
+  au: {fileID: 0}
 --- !u!4 &374226878
 Transform:
   m_ObjectHideFlags: 0
