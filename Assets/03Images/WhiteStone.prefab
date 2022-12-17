@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8247712931256190245}
   - component: {fileID: -4430175393785274826}
   - component: {fileID: 6632409922317722531}
+  - component: {fileID: -4099166013100385983}
   m_Layer: 6
   m_Name: WhiteStone
   m_TagString: Stone
@@ -131,3 +132,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-4099166013100385983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650139299791435981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001dc1c46b64d724ea57c8fcc7453493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  semiCircle: {fileID: 6779934795902330668, guid: c08e11eb6e4cb9543a658b01354f48fc, type: 3}
+  rule: {fileID: 0}
+  stone: {fileID: 0}

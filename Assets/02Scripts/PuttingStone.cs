@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PuttingStone : MonoBehaviour
 {
-    Vector3 mousePos;
-    float offsetX;
-    float offsetY;
+    public Vector3 mousePos;
+    public float offsetX;
+    public float offsetY;
     public GameObject stone_B,stone_W;
     public Camera cam;
     RaycastHit2D hit;

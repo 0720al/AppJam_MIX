@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3414063951567863029}
   - component: {fileID: -8847411134140393406}
   - component: {fileID: -2648856184074011695}
+  - component: {fileID: -5601285718305635635}
   m_Layer: 6
   m_Name: BlackStone
   m_TagString: Stone
@@ -131,3 +132,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-5601285718305635635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8778603656944419101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 001dc1c46b64d724ea57c8fcc7453493, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  semiCircle: {fileID: 6779934795902330668, guid: c08e11eb6e4cb9543a658b01354f48fc, type: 3}
+  rule: {fileID: 0}
+  stone: {fileID: 0}

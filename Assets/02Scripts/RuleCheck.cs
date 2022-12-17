@@ -11,5 +11,6 @@ public class RuleCheck : MonoBehaviour
     }
     void Update()
     {
+
     }
 }
