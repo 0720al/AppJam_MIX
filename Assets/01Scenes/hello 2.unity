@@ -520,7 +520,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uC67C\uCABD \uB300\uAC01\uC120\uC73C\uB85C\n\uC0C1\uB300\uB3CC\uC744
+  m_Text: "\uC624\uB978\uCABD \uB300\uAC01\uC120\uC73C\uB85C\n\uC0C1\uB300\uB3CC\uC744
     \uC774\uB3D9\uC2DC\uD0A8\uB2E4."
 --- !u!222 &131919917
 CanvasRenderer:

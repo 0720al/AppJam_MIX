@@ -28,6 +28,7 @@ public class PuttingStone : MonoBehaviour
     public GameObject green;
     public int blackCnt;
     public int WhiteCnt;
+    public GameObject[] skillImgs;
     void Start()
     {
         
