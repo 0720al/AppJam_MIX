@@ -24,6 +24,7 @@ public class PuttingStone : MonoBehaviour
     public AudioClip[] skillM;
     public AudioSource au;
     public GameObject GoldGee;
+    public GameObject green;
     void Start()
     {
         
