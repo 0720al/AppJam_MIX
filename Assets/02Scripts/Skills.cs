@@ -106,6 +106,7 @@ public class Skills : MonoBehaviour
                 Debug.Log(skill1Hit.collider.name);
                 if (skill1Hit)
                 {
+                    StartCoroutine(SkillBlink(0));
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
@@ -124,6 +125,7 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f, layerMask);
                 if (skill2Hit)
                 {
+                    StartCoroutine(SkillBlink(1));
                     rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
                     rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
@@ -141,6 +143,7 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f, hit.transform.position.y), Vector2.right, 0.1f, layerMask);
                 if (skill3Hit)
                 {
+                    StartCoroutine(SkillBlink(2));
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
@@ -158,6 +161,7 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
                 if (skill4Hit)
                 {
+                    StartCoroutine(SkillBlink(3));
                     rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 2 : 1;
                     skill4Hit.collider.transform.position = new Vector3(skill4Hit.collider.transform.position.x, skill4Hit.collider.transform.position.y - 1, 0);
                     hit.collider.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, 0);
@@ -203,5 +207,18 @@ public class Skills : MonoBehaviour
             stone.green.SetActive(false);
         }
     }
-
+    IEnumerator SkillBlink(int i)
+    {
+        stone.skillImgs[i].gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        stone.skillImgs[i].gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.15f);
+        stone.skillImgs[i].gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        stone.skillImgs[i].gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.15f);
+        stone.skillImgs[i].gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.15f);
+        stone.skillImgs[i].gameObject.SetActive(false);
+    }
 }
