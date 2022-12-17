@@ -79,10 +79,11 @@ public class Skills : MonoBehaviour
         {
             Debug.Log("hit.transform.position : " + hit.transform.position);
             RaycastHit2D skill1Hit = Physics2D.Raycast(hit.transform.position, Vector2.up, 1);
+            Debug.Log("skill1Hit.collider.transform.position : " + skill1Hit.collider.transform.position);
             if (skill1Hit)
             {
                 skill1Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, 0);
-                Debug.Log("skill1Hit.collider.transform.position : " + skill1Hit.collider.transform.position);
+                Debug.Log("skill1Hit.collider.transform.position22 : " + skill1Hit.collider.transform.position);
             }
         }
         if (skill2)
@@ -91,7 +92,7 @@ public class Skills : MonoBehaviour
             Debug.Log("2 " + hit.transform.position);
             if (skill2Hit)
             {
-                skill2Hit.collider.transform.position += new Vector3(0, -1, 0);
+                skill2Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 1, 0);
                 Debug.Log("222 " + skill2Hit.transform.position);
             }
         }
@@ -101,7 +102,7 @@ public class Skills : MonoBehaviour
             Debug.Log("3 " + hit.transform.position);
             if (skill3Hit)
             {
-                skill3Hit.collider.transform.position += new Vector3(-2, 0, 0);
+                skill3Hit.collider.transform.position = new Vector3(hit.transform.position.x - 2, hit.transform.position.y, 0);
                 Debug.Log("333 " + skill3Hit.transform.position);
             }
         }
@@ -111,7 +112,7 @@ public class Skills : MonoBehaviour
             Debug.Log("4 " + hit.transform.position);
             if (skill4Hit)
             {
-                skill4Hit.collider.transform.position += new Vector3(0, -2, 0);
+                skill4Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, 0);
                 Debug.Log("444 " + skill4Hit.transform.position);
             }
         }
