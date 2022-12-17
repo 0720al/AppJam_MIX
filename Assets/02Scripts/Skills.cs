@@ -7,7 +7,8 @@ public class Skills : MonoBehaviour
     bool rightMouse;
     public GameObject semiCircle;
     public RuleCheck rule;
-    public PuttingStone stone;
+    public float offsetX;
+    public float offsetY;
     public int cnt;
     GameObject semiC;
     bool skill1;
@@ -18,10 +19,12 @@ public class Skills : MonoBehaviour
     RaycastHit2D hit;
     Vector3 stay;
     BoxCollider2D box;
-
+    bool one = true;
+    int layerMask;
     void Awake()
     {
         box = GetComponent<BoxCollider2D>();
+
     }
 
     void Update()
@@ -65,66 +68,48 @@ public class Skills : MonoBehaviour
         {
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-
-            hit = Physics2D.Raycast(mousePos, transform.forward, 15);
-            Debug.DrawRay(mousePos, transform.forward * 10, Color.red, 0.3f);
-            if(hit)
-            {
-                //hit.transform.GetComponent<SpriteRenderer>().color = Color.green;
-                Debug.Log("hit " + hit.transform.position);
-
-            }
+            layerMask = 1 << LayerMask.NameToLayer("Stone");
+            offsetX = mousePos.x >= 0 ? 0.5f : -0.5f;
+            offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
+            hit = Physics2D.Raycast(new Vector2((int)mousePos.x + offsetX, (int)mousePos.y + offsetY), Vector3.forward, 100, layerMask);
+ 
         }
-        if (skill1)
+        if (skill1 && hit.collider.gameObject == gameObject)
         {
-            Debug.Log("hit.transform.position : " + hit.transform.position);
-            RaycastHit2D skill1Hit = Physics2D.Raycast(hit.transform.position, Vector2.up, 1);
-            Debug.Log("skill1Hit.collider.transform.position : " + skill1Hit.collider.transform.position);
+            RaycastHit2D skill1Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f);
             if (skill1Hit)
             {
-                skill1Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, 0);
-                Debug.Log("skill1Hit.collider.transform.position22 : " + skill1Hit.collider.transform.position);
-                Debug.Log("Sname : " + skill1Hit.transform.name);
-                Debug.Log("Hname : " + hit.transform.name);
+                skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
             }
         }
-        if (skill2)
+        if (skill2 && hit.collider.gameObject == gameObject)
         {
-            RaycastHit2D skill2Hit = Physics2D.Raycast(hit.transform.position, Vector2.down, 1);
-            Debug.Log("2 " + hit.transform.position);
+            RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f);
             if (skill2Hit)
             {
-                skill2Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 1, 0);
-                Debug.Log("222 " + skill2Hit.transform.position);
+                skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
             }
         }
-        if (skill3)
+        if (skill3 && hit.collider.gameObject == gameObject)
         {
-            RaycastHit2D skill3Hit = Physics2D.Raycast(hit.transform.position, Vector2.right, 1);
-            Debug.Log("3 " + hit.transform.position);
+            RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f,hit.transform.position.y), Vector2.right, 0.1f);
             if (skill3Hit)
             {
-                skill3Hit.collider.transform.position = new Vector3(hit.transform.position.x - 2, hit.transform.position.y, 0);
-                Debug.Log("333 " + skill3Hit.transform.position);
-            }
+                skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
+                Debug.Log(hit.collider.name);
+            }   
         }
-        if (skill4)
+        if (skill4 && hit.collider.gameObject == gameObject)
         {
-            RaycastHit2D skill4Hit = Physics2D.Raycast(hit.transform.position, Vector2.up, 1);
-            Debug.Log("4 " + hit.transform.position);
-            if (skill4Hit)
+            for(int i = 0; i < 19; i++)
             {
-                skill4Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y - 2, 0);
-                Debug.Log("444 " + skill4Hit.transform.position);
+                RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f);
+                if (skill4Hit && skill4Hit.collider.gameObject != gameObject)
+                {
+                    Destroy(skill4Hit.collider.gameObject);
+                }
             }
         }
-    }
-    void Rays()
-    {
-        Debug.DrawRay(transform.position, Vector2.up, Color.red);
-        Debug.DrawRay(transform.position, Vector2.down, Color.red);
-        Debug.DrawRay(transform.position, Vector2.left, Color.red);
-        Debug.DrawRay(transform.position, Vector2.right, Color.red);
     }
     /*void Skill()
     {
