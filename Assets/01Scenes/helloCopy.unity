@@ -906,10 +906,12 @@ MonoBehaviour:
   BlackOrWhite: 0
   rule: {fileID: 1458797432}
   putAble: 0
+  stone: {fileID: 0}
   trunOrder: {fileID: 0}
   buildPos: {x: 0, y: 0, z: 0}
   put: 0
   timeLimit: {fileID: 0}
+  timeFlow: 30
 --- !u!4 &884893033
 Transform:
   m_ObjectHideFlags: 0

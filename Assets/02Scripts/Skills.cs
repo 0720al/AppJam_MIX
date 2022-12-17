@@ -38,7 +38,6 @@ public class Skills : MonoBehaviour
         //ShowSkills();
         StoneDetecte();
         //Rays();
-        Debug.Log(rule.checkerboard[2, 2]);
     }
     void InputManager()
     {
@@ -100,7 +99,8 @@ public class Skills : MonoBehaviour
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
-                    
+                    stone.au.clip = stone.skillM[0];
+                    stone.au.Play();
                 }
                 
                 nextTrun();
@@ -113,6 +113,8 @@ public class Skills : MonoBehaviour
                     rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
                     rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[1];
+                    stone.au.Play();
                 }
                 nextTrun();
             }
@@ -124,6 +126,8 @@ public class Skills : MonoBehaviour
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = 0;
                     skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[2];
+                    stone.au.Play();
                 }
                 nextTrun();
             }
@@ -136,12 +140,16 @@ public class Skills : MonoBehaviour
                     skill4Hit.collider.transform.position = new Vector3(skill4Hit.collider.transform.position.x, skill4Hit.collider.transform.position.y - 1, 0);
                     hit.collider.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, 0);
                     rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[3];
+                    stone.au.Play();
                 }
                 nextTrun();
             }
             if (skill5 && hit.collider.gameObject == gameObject)
             {
                 Instantiate(UmmYang,transform.position,UmmYang.transform.rotation);
+                stone.au.clip = stone.skillM[4];
+                stone.au.Play();
                 for (int i = 0; i < 19; i++)
                 {
                     RaycastHit2D skill5Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f, layerMask);

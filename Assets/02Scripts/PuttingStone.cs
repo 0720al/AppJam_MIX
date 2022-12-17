@@ -21,6 +21,8 @@ public class PuttingStone : MonoBehaviour
     public bool put;
     public Slider timeLimit;
     public float timeFlow = 30;
+    public AudioClip[] skillM;
+    public AudioSource au;
     void Start()
     {
         
