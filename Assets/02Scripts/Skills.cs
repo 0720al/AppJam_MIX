@@ -84,11 +84,13 @@ public class Skills : MonoBehaviour
             {
                 skill1Hit.collider.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y + 1, 0);
                 Debug.Log("skill1Hit.collider.transform.position22 : " + skill1Hit.collider.transform.position);
+                Debug.Log("Sname : " + skill1Hit.transform.name);
+                Debug.Log("Hname : " + hit.transform.name);
             }
         }
         if (skill2)
         {
-            RaycastHit2D skill2Hit = Physics2D.Raycast(transform.position, Vector2.down, 1);
+            RaycastHit2D skill2Hit = Physics2D.Raycast(hit.transform.position, Vector2.down, 1);
             Debug.Log("2 " + hit.transform.position);
             if (skill2Hit)
             {
@@ -98,7 +100,7 @@ public class Skills : MonoBehaviour
         }
         if (skill3)
         {
-            RaycastHit2D skill3Hit = Physics2D.Raycast(transform.position, Vector2.right, 1);
+            RaycastHit2D skill3Hit = Physics2D.Raycast(hit.transform.position, Vector2.right, 1);
             Debug.Log("3 " + hit.transform.position);
             if (skill3Hit)
             {
@@ -108,7 +110,7 @@ public class Skills : MonoBehaviour
         }
         if (skill4)
         {
-            RaycastHit2D skill4Hit = Physics2D.Raycast(transform.position, Vector2.up, 1);
+            RaycastHit2D skill4Hit = Physics2D.Raycast(hit.transform.position, Vector2.up, 1);
             Debug.Log("4 " + hit.transform.position);
             if (skill4Hit)
             {
