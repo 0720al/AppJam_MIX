@@ -155,12 +155,20 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0, z: 0}
   offsetX: 0
   offsetY: 0
-  stone_B: {fileID: 2650139299791435981, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
-  stone_W: {fileID: 8778603656944419101, guid: 4d1a9e9a925f7454b94cff7d7c122663, type: 3}
+  stone_B: {fileID: 8778603656944419101, guid: 4d1a9e9a925f7454b94cff7d7c122663, type: 3}
+  stone_W: {fileID: 2650139299791435981, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
   cam: {fileID: 371276584}
   BlackOrWhite: 0
   rule: {fileID: 394947434}
+  putAble: 0
+  stone: {fileID: 0}
+  trunOrder: {fileID: 0}
+  buildPos: {x: 0, y: 0, z: 0}
   put: 0
+  timeLimit: {fileID: 0}
+  timeFlow: 30
+  skillM: []
+  au: {fileID: 0}
 --- !u!4 &86830198
 Transform:
   m_ObjectHideFlags: 0
