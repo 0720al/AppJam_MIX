@@ -15,7 +15,7 @@ public class DelayScene : MonoBehaviour
     void Update()
     {
         time += Time.deltaTime;
-        if(time > 3)
+        if(time > 4.5f)
         {
             SceneManager.LoadScene(2);
         }
