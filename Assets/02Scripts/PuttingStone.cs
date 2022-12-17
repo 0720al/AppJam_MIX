@@ -22,6 +22,17 @@ public class PuttingStone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< Updated upstream
+=======
+        beforeConfirmed();
+    }
+    void TimeLimit()
+    {
+
+    }
+    void beforeConfirmed()
+    {
+>>>>>>> Stashed changes
         layerMask = 1 << LayerMask.NameToLayer("Stone");
         hit = Physics2D.Raycast(new Vector3(mousePos.x, mousePos.y), Vector3.forward, 100, layerMask);
         mousePos = Input.mousePosition;
@@ -38,4 +49,19 @@ public class PuttingStone : MonoBehaviour
             put = true;
         }
     }
+<<<<<<< Updated upstream
+=======
+    public void posConfirmed()
+    {
+        if (putAble) {
+            GameObject.Destroy(stone);
+            Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
+            rule.checkerboard[(int)(buildPos.y + 8.5f), (int)(buildPos.x + 8.5f)] = BlackOrWhite + 1;
+            trunOrder.text = trunOrder.text == "검은 돌" ? "흰 돌" : "검은 돌";
+            BlackOrWhite = BlackOrWhite == 0 ? 1 : 0;
+            putAble = false;
+        }
+
+    }
+>>>>>>> Stashed changes
 }
