@@ -146,5 +146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   semiCircle: {fileID: 4151597212602779644, guid: 7bdc97a247d81f94babec192b931bb59, type: 3}
   rule: {fileID: 0}
-  stone: {fileID: 0}
+  offsetX: 0
+  offsetY: 0
   cnt: 0
+  UmmYang: {fileID: 6271143800029637364, guid: 0c2fed8040366444eac9d13d7abaf23c, type: 3}
+  Disappear: {fileID: 832247471195415406, guid: 3de0489dc45ce7e4aa9c48d94cce9378, type: 3}
