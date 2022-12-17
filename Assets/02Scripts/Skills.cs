@@ -89,6 +89,12 @@ public class Skills : MonoBehaviour
         }
         if (hit)
         {
+            if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+            {
+                stone.green.SetActive(true);
+                stone.green.transform.position = hit.collider.transform.position;
+            }
+
             GameObject.Destroy(stone.stone);
             if (skill1 && hit.collider.gameObject == gameObject)
             {
@@ -165,6 +171,10 @@ public class Skills : MonoBehaviour
 
                 nextTrun();
             }
+        }
+        else
+        {
+            stone.green.SetActive(false);
         }
     }
 
