@@ -40,6 +40,7 @@ public class PuttingStone : MonoBehaviour
         beforeConfirmed();
         TimeLimit();
         EnterSkip();
+
     }
     void TimeLimit()
     {
@@ -94,6 +95,7 @@ public class PuttingStone : MonoBehaviour
             trunOrder.color = BlackOrWhite == 0 ? Color.white : Color.black;
             timeFlow = 30;
             putAble = false;
+            rule.isblack = BlackOrWhite;
         }
 
     }
@@ -111,6 +113,7 @@ public class PuttingStone : MonoBehaviour
                 trunOrder.color = BlackOrWhite == 0 ? Color.white : Color.black;
                 timeFlow = 30;
                 putAble = false;
+                rule.isblack = BlackOrWhite;
             }
         }
     }

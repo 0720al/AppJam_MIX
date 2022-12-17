@@ -10,6 +10,7 @@ public class RuleCheck : MonoBehaviour
     bool check = false;
 
     public int[,] checkerboard = new int[19,19];
+    public int isblack;
     void Start()
     {
            
@@ -36,7 +37,7 @@ public class RuleCheck : MonoBehaviour
                     if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
                         && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != isblack + 1)
                         {
                             break;
                         }
@@ -48,9 +49,9 @@ public class RuleCheck : MonoBehaviour
                     }
                     
                 }
-                if(j == 5)
+                if(j >= 5)
                 {
-                    Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Win = isblack; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
                     if (Win == 0)
                     {
                         SceneManager.LoadScene("BlackWin");
@@ -70,7 +71,7 @@ public class RuleCheck : MonoBehaviour
                     if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
                         && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j)] != isblack + 1)
                         {
                             break;
                         }
@@ -82,9 +83,9 @@ public class RuleCheck : MonoBehaviour
                     }
 
                 }
-                if (j == 5)
+                if (j >= 5)
                 {
-                    Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Win = isblack; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
                     if (Win == 0)
                     {
                         SceneManager.LoadScene("BlackWin");
@@ -104,7 +105,7 @@ public class RuleCheck : MonoBehaviour
                     if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
                         && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f)] != isblack + 1)
                         {
                             break;
                         }
@@ -116,9 +117,9 @@ public class RuleCheck : MonoBehaviour
                     }
 
                 }
-                if (j == 5)
+                if (j >= 5)
                 {
-                    Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Win = isblack; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
                     if (Win == 0)
                     {
                         SceneManager.LoadScene("BlackWin");
@@ -138,7 +139,7 @@ public class RuleCheck : MonoBehaviour
                     if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f) <= 18
                         && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != isblack + 1)
                         {
                             break;
                         }
@@ -150,9 +151,9 @@ public class RuleCheck : MonoBehaviour
                     }
 
                 }
-                if (j == 5)
+                if (j >= 5)
                 {
-                    Win = putting.BlackOrWhite; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
+                    Win = isblack; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
                     if(Win == 0)
                     {
                         SceneManager.LoadScene("BlackWin");
