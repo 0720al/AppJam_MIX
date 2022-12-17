@@ -15,16 +15,21 @@ public class Skills : MonoBehaviour
     bool skill2;
     bool skill3;
     bool skill4;
+    bool skill5;
     Vector3 mousePos;
     RaycastHit2D hit;
     Vector3 stay;
     BoxCollider2D box;
     bool one = true;
     int layerMask;
+    public GameObject UmmYang;
+    public ParticleSystem Disappear;
+    public PuttingStone stone;
     void Awake()
     {
         box = GetComponent<BoxCollider2D>();
-
+        stone = GameObject.FindGameObjectWithTag("Player").GetComponent<PuttingStone>();
+        rule = GameObject.FindGameObjectWithTag("GM").GetComponent<RuleCheck>();
     }
 
     void Update()
@@ -33,6 +38,7 @@ public class Skills : MonoBehaviour
         //ShowSkills();
         StoneDetecte();
         //Rays();
+        Debug.Log(rule.checkerboard[2, 2]);
     }
     void InputManager()
     {
@@ -41,6 +47,7 @@ public class Skills : MonoBehaviour
         skill2 = Input.GetKeyDown(KeyCode.Alpha2);
         skill3 = Input.GetKeyDown(KeyCode.Alpha3);
         skill4 = Input.GetKeyDown(KeyCode.Alpha4);
+        skill5 = Input.GetKeyDown(KeyCode.Alpha5);
     }
     void ShowSkills()
     {
@@ -62,8 +69,16 @@ public class Skills : MonoBehaviour
             }
         }
     }
+    void nextTrun()
+    {
+        stone.put = true;
+        stone.trunOrder.text = stone.trunOrder.text == "검은 돌" ? "흰 돌" : "검은 돌";
+        stone.trunOrder.color = stone.BlackOrWhite == 0 ? Color.white : Color.black;
+        stone.timeFlow = 30;
+    }
     void StoneDetecte()
     {
+
         if (Input.GetMouseButtonDown(0))
         {
             mousePos = Input.mousePosition;
@@ -72,82 +87,76 @@ public class Skills : MonoBehaviour
             offsetX = mousePos.x >= 0 ? 0.5f : -0.5f;
             offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
             hit = Physics2D.Raycast(new Vector2((int)mousePos.x + offsetX, (int)mousePos.y + offsetY), Vector3.forward, 100, layerMask);
- 
         }
-        if (skill1 && hit.collider.gameObject == gameObject)
+        if (hit)
         {
-            RaycastHit2D skill1Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f);
-            if (skill1Hit)
+            GameObject.Destroy(stone.stone);
+            if (skill1 && hit.collider.gameObject == gameObject)
             {
-                skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
-            }
-        }
-        if (skill2 && hit.collider.gameObject == gameObject)
-        {
-            RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f);
-            if (skill2Hit)
-            {
-                skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
-            }
-        }
-        if (skill3 && hit.collider.gameObject == gameObject)
-        {
-            RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f,hit.transform.position.y), Vector2.right, 0.1f);
-            if (skill3Hit)
-            {
-                skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
-                Debug.Log(hit.collider.name);
-            }   
-        }
-        if (skill4 && hit.collider.gameObject == gameObject)
-        {
-            for(int i = 0; i < 19; i++)
-            {
-                RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f);
-                if (skill4Hit && skill4Hit.collider.gameObject != gameObject)
+                RaycastHit2D skill1Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
+                Debug.Log(skill1Hit.collider.name);
+                if (skill1Hit)
                 {
-                    Destroy(skill4Hit.collider.gameObject);
+                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = 0;
+                    skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
+                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
+                    
                 }
+                
+                nextTrun();
+            }
+            if (skill2 && hit.collider.gameObject == gameObject)
+            {
+                RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f, layerMask);
+                if (skill2Hit)
+                {
+                    rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = 0;
+                    skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
+                    rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                }
+                nextTrun();
+            }
+            if (skill3 && hit.collider.gameObject == gameObject)
+            {
+                RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f, hit.transform.position.y), Vector2.right, 0.1f, layerMask);
+                if (skill3Hit)
+                {
+                    rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = 0;
+                    skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
+                    rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                }
+                nextTrun();
+            }
+            if (skill4 && hit.collider.gameObject == gameObject)
+            {
+                RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
+                if (skill4Hit)
+                {
+                    rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 2 : 1;
+                    skill4Hit.collider.transform.position = new Vector3(skill4Hit.collider.transform.position.x, skill4Hit.collider.transform.position.y - 1, 0);
+                    hit.collider.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, 0);
+                    rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                }
+                nextTrun();
+            }
+            if (skill5 && hit.collider.gameObject == gameObject)
+            {
+                Instantiate(UmmYang,transform.position,UmmYang.transform.rotation);
+                for (int i = 0; i < 19; i++)
+                {
+                    RaycastHit2D skill5Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f, layerMask);
+                    if (skill5Hit && skill5Hit.collider.gameObject != gameObject)
+                    {
+                        rule.checkerboard[(int)((int)skill5Hit.collider.transform.position.y + 8.5f), (int)((int)skill5Hit.collider.transform.position.x + 8.5f)] = 0;
+                        Instantiate(Disappear.gameObject, skill5Hit.transform.position, Disappear.transform.rotation);
+                        Destroy(skill5Hit.collider.gameObject);
+
+                    }
+                }
+
+                nextTrun();
             }
         }
     }
-    /*void Skill()
-    {
-        if(skill1)
-        {
-            Debug.Log("1");
-            if(Physics.Raycast(transform.position, Vector2.up, out hit, 1))
-            {
-                hit.collider.transform.position += new Vector3(0, 1, 0);
-                Debug.Log("111");
-            }
-        }
-        if(skill2)
-        {
-            Debug.Log("2");
-            if(Physics.Raycast(transform.position, Vector2.down, out hit, 1))
-            {
-                hit.collider.transform.position += new Vector3(0, -1, 0);
-                Debug.Log("222");
-            }    
-        }
-        if(skill3)
-        {
-            Debug.Log("3");
-            if(Physics.Raycast(transform.position, Vector2.right, out hit, 1))
-            {
-                hit.collider.transform.position += new Vector3(-2, 0, 0);
-                Debug.Log("333");
-            }
-        }
-        if (skill4)
-        {
-            Debug.Log("4");
-            if (Physics.Raycast(transform.position, Vector2.up, out hit, 1))
-            {
-                hit.collider.transform.position += new Vector3(0, -2, 0);
-                Debug.Log("444");
-            }
-        }
-    }*/
+
 }

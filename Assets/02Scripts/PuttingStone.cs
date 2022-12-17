@@ -15,12 +15,12 @@ public class PuttingStone : MonoBehaviour
     public int BlackOrWhite;
     public RuleCheck rule;
     public bool putAble;
-    GameObject stone;
+    public GameObject stone;
     public Text trunOrder;
     public Vector3 buildPos;
     public bool put;
     public Slider timeLimit;
-    float timeFlow = 30;
+    public float timeFlow = 30;
     void Start()
     {
         
@@ -60,6 +60,7 @@ public class PuttingStone : MonoBehaviour
             stone = Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
 
             putAble = true;
+            stone.layer = 0;
             stone.GetComponent<SpriteRenderer>().color = new Color(stone.GetComponent<SpriteRenderer>().color.r, stone.GetComponent<SpriteRenderer>().color.g, stone.GetComponent<SpriteRenderer>().color.b, 0.3f);
         }
     }
