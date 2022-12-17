@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class RuleCheck : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public int[,] checkerboard = new int[18,18];
     void Start()
     {
-        
+           
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
     }
 }
