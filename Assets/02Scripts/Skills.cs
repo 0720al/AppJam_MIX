@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Skills : MonoBehaviour
 {
+    bool rightMouse;
     void Start()
     {
         
@@ -12,5 +13,9 @@ public class Skills : MonoBehaviour
     void Update()
     {
         
+    }
+    void InputManager()
+    {
+        rightMouse = 
     }
 }
