@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PuttingStone : MonoBehaviour
 {
@@ -46,7 +47,17 @@ public class PuttingStone : MonoBehaviour
         timeFlow -= Time.deltaTime;
         timeLimit.value =  1 - ((30 - timeFlow) / 30);
         if (timeLimit.value <= 0)
+        {
             timeLimit.transform.GetChild(1).gameObject.SetActive(false);
+            if (BlackOrWhite == 1)
+            {
+                SceneManager.LoadScene("BlackWin");
+            }
+            else if (BlackOrWhite == 0)
+            {
+                SceneManager.LoadScene("WhiteWin");
+            }
+        }
         else
             timeLimit.transform.GetChild(1).gameObject.SetActive(true);
     }
