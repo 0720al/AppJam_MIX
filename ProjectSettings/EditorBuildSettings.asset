@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01Scenes/hello 2.unity
     guid: 48157f192602d2141925323b0e65911b
+  - enabled: 1
+    path: Assets/01Scenes/BlackWin.unity
+    guid: 2cae6a887456aa94683aa655abf79690
+  - enabled: 1
+    path: Assets/01Scenes/WhiteWin.unity
+    guid: 6e42777b1968883419b36e28d86f4144
   m_configObjects: {}
