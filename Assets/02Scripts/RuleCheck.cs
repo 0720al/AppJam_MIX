@@ -32,10 +32,10 @@ public class RuleCheck : MonoBehaviour
             {
                 for (j = 0; j < 5; j++)
                 {
-                    if ((int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) <= 18
-                        && (int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) >= 0)
+                    if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
+                        && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
                         {
                             break;
                         }
@@ -59,10 +59,10 @@ public class RuleCheck : MonoBehaviour
             {
                 for (j = 0; j < 5; j++)
                 {
-                    if ((int)((int)putting.mousePos.x + putting.offsetX + 8.5f + i - j) >= 0 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) <= 18
-                        && (int)((int)putting.mousePos.x + putting.offsetX + 8.5f + i - j) <= 18 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) >= 0)
+                    if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
+                        && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.mousePos.x + putting.offsetX + 8.5f + i - j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f + i - j)] != putting.BlackOrWhite + 1)
                         {
                             break;
                         }
@@ -86,10 +86,10 @@ public class RuleCheck : MonoBehaviour
             {
                 for (j = 0; j < 5; j++)
                 {
-                    if ((int)((int)putting.mousePos.x + putting.offsetX + 8.5f) >= 0 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) <= 18
-                        && (int)((int)putting.mousePos.x + putting.offsetX + 8.5f) <= 18 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j) >= 0)
+                    if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) <= 18
+                        && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.mousePos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.mousePos.x + putting.offsetX + 8.5f)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f + i - j), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f)] != putting.BlackOrWhite + 1)
                         {
                             break;
                         }
@@ -113,10 +113,10 @@ public class RuleCheck : MonoBehaviour
             {
                 for (j = 0; j < 5; j++)
                 {
-                    if ((int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f) <= 18
-                        && (int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.mousePos.y + putting.offsetY + 8.5f) >= 0)
+                    if ((int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) >= 0 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f) <= 18
+                        && (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j) <= 18 && (int)((int)putting.buildPos.y + putting.offsetY + 8.5f) >= 0)
                     {
-                        if (checkerboard[(int)((int)putting.mousePos.y + putting.offsetY + 8.5f), (int)((int)putting.mousePos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
+                        if (checkerboard[(int)((int)putting.buildPos.y + putting.offsetY + 8.5f), (int)((int)putting.buildPos.x + putting.offsetX + 8.5f - i + j)] != putting.BlackOrWhite + 1)
                         {
                             break;
                         }
