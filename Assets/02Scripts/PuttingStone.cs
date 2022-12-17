@@ -31,6 +31,7 @@ public class PuttingStone : MonoBehaviour
     {
         beforeConfirmed();
         TimeLimit();
+        EnterSkip();
     }
     void TimeLimit()
     {
@@ -77,5 +78,22 @@ public class PuttingStone : MonoBehaviour
             putAble = false;
         }
 
+    }
+    void EnterSkip()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (putAble)
+            {
+                put = true;
+                GameObject.Destroy(stone);
+                Instantiate(BlackOrWhite == 0 ? stone_B : stone_W, buildPos, stone_B.transform.rotation);
+                rule.checkerboard[(int)(buildPos.y + 8.5f), (int)(buildPos.x + 8.5f)] = BlackOrWhite + 1;
+                trunOrder.text = trunOrder.text == "검은 돌" ? "흰 돌" : "검은 돌";
+                trunOrder.color = BlackOrWhite == 0 ? Color.white : Color.black;
+                timeFlow = 30;
+                putAble = false;
+            }
+        }
     }
 }
