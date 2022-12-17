@@ -145,7 +145,7 @@ public class Skills : MonoBehaviour
                 }
                 nextTrun();
             }
-            if (skill5 && hit.collider.gameObject == gameObject)
+            if (skill5 && hit.collider.gameObject == gameObject && cnt == 0)
             {
                 Instantiate(UmmYang,transform.position,UmmYang.transform.rotation);
                 stone.au.clip = stone.skillM[4];
@@ -158,7 +158,7 @@ public class Skills : MonoBehaviour
                         rule.checkerboard[(int)((int)skill5Hit.collider.transform.position.y + 8.5f), (int)((int)skill5Hit.collider.transform.position.x + 8.5f)] = 0;
                         Instantiate(Disappear.gameObject, skill5Hit.transform.position, Disappear.transform.rotation);
                         Destroy(skill5Hit.collider.gameObject);
-
+                        cnt++;
                     }
                 }
 
