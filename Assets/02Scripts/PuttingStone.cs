@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class PuttingStone : MonoBehaviour
 {
@@ -29,18 +30,52 @@ public class PuttingStone : MonoBehaviour
     public int blackCnt;
     public int WhiteCnt;
     public GameObject[] skillImgs;
+
+    public GameObject[] skillGuide;
+    GraphicRaycaster gr;
+    GameObject pastSkillGuide;
     void Start()
     {
-        
+        gr = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GraphicRaycaster>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        visibleGuide();
         beforeConfirmed();
         TimeLimit();
         EnterSkip();
 
+    }
+    void visibleGuide()
+    {
+        var ped = new PointerEventData(null);
+        ped.position = Input.mousePosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        gr.Raycast(ped, results);
+        if (results.Count <= 0)
+        {
+            for (int i = 0; i < skillGuide.Length; i++)
+            {
+                skillGuide[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            }
+            return;
+        }
+        if (pastSkillGuide != null && results[0].gameObject != pastSkillGuide)
+        {
+            pastSkillGuide.transform.GetChild(1).gameObject.SetActive(false);
+            pastSkillGuide = null;
+        }
+        for (int i = 0; i < skillGuide.Length; i++)
+        {
+            if (results[0].gameObject == skillGuide[i])
+            {
+                pastSkillGuide = skillGuide[i].gameObject;
+                Debug.Log(skillGuide[i].gameObject.transform.GetChild(0).transform.localPosition);
+                skillGuide[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
+            }
+        }
     }
     void TimeLimit()
     {
