@@ -98,7 +98,6 @@ public class Skills : MonoBehaviour
                 stone.green.SetActive(true);
                 stone.green.transform.position = hit.collider.transform.position;
             }
-
             GameObject.Destroy(stone.stone);
             if (skill1 && hit.collider.gameObject == gameObject)
             {
@@ -106,8 +105,14 @@ public class Skills : MonoBehaviour
                 Debug.Log(skill1Hit.collider.name);
                 if (skill1Hit)
                 {
+                    if(rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 9.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 9.5f)] != 0)
+                    {
+                        Debug.Log("스킬1 리턴");
+                        return;
+                    }
                     StartCoroutine(SKillBlink(0));
-                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x+ offsetX + 8.5f)] = 0;
+                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
+                    Debug.Log(skill1Hit.collider.transform.position.y);
                     skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
                     stone.au.clip = stone.skillM[0];
@@ -126,6 +131,10 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f, layerMask);
                 if (skill2Hit)
                 {
+                    if(rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
+                    {
+                        return;
+                    }
                     StartCoroutine(SKillBlink(1));
                     rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y +offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x+ offsetX + 8.5f)] = 0;
                     skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
@@ -147,6 +156,10 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f, hit.transform.position.y), Vector2.right, 0.1f, layerMask);
                 if (skill3Hit)
                 {
+                    if(rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
+                    {
+                        return;
+                    }
                     StartCoroutine(SKillBlink(2));
                     rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
                     skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
@@ -161,7 +174,7 @@ public class Skills : MonoBehaviour
                 {
                     return;
                 }
-            }
+            } 
             if (skill4 && hit.collider.gameObject == gameObject)
             {
                 RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
@@ -211,6 +224,7 @@ public class Skills : MonoBehaviour
                     stone.WhiteCnt++;
                 }
                 stone.GoldGee.SetActive(true);
+                nextTrun();
             }
         }
         else
