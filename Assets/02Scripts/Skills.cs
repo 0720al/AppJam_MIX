@@ -211,6 +211,7 @@ public class Skills : MonoBehaviour
                     stone.WhiteCnt++;
                 }
                 stone.GoldGee.SetActive(true);
+                nextTrun();
             }
         }
         else
