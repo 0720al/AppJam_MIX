@@ -76,7 +76,6 @@ public class Skills : MonoBehaviour
     }
     void nextTrun()
     {
-        //stone.green.SetActive(true);
         stone.put = true;
         stone.trunOrder.text = stone.trunOrder.text == "검은 돌" ? "흰 돌" : "검은 돌";
         stone.trunOrder.color = stone.BlackOrWhite == 0 ? Color.white : Color.black;
@@ -115,19 +114,19 @@ public class Skills : MonoBehaviour
                         skill1Color.a = 0.5f;
                         return;
                     }
-                    if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
-                    {
-                        StartCoroutine(SKillBlink(0));
-                        rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
-                        Debug.Log(skill1Hit.collider.transform.position.y);
-                        skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
-                        rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
-                        stone.au.clip = stone.skillM[0];
-                        stone.au.Play();
-                        stone.buildPos = skill1Hit.collider.transform.position;
-                        rule.isblack = skill1Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
-                        nextTrun();
-                    }
+                    StartCoroutine(SKillBlink(0));
+                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
+                    Debug.Log(skill1Hit.collider.transform.position.y);
+                    skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
+                    rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
+                    stone.au.clip = stone.skillM[0];
+                    stone.buildPos = skill1Hit.collider.transform.position;
+                    Debug.Log((int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f) + "," +  (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f));
+                    Debug.Log(rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f),(int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)]);
+                    stone.au.Play();
+                    stone.buildPos = skill1Hit.collider.transform.position;
+                    rule.isblack = skill1Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    nextTrun();
                 }
                 else
                 {
@@ -139,23 +138,20 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f, layerMask);
                 if (skill2Hit)
                 {
-                    if(rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
+                    if(rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
                     {
-                        Debug.Log("스킬2 리턴");
                         return;
                     }
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
-                    {
-                        StartCoroutine(SKillBlink(1));
-                        rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
-                        skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
-                        rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
-                        stone.au.clip = stone.skillM[1];
-                        stone.au.Play();
-                        stone.buildPos = skill2Hit.collider.transform.position;
-                        rule.isblack = skill2Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
-                        nextTrun();
-                    }
+                    StartCoroutine(SKillBlink(1));
+                    rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y +offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x+ offsetX + 8.5f)] = 0;
+                    skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
+                    rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY  + 8.5f), (int)((int)skill2Hit.collider.transform.position.x+ offsetX + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[1];
+                    stone.au.Play();
+                    stone.buildPos = skill2Hit.collider.transform.position;
+                    rule.isblack = skill2Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill2Hit.collider.transform.position;
+                    nextTrun();
                 }
                 else
                 {
@@ -168,23 +164,20 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f, hit.transform.position.y), Vector2.right, 0.1f, layerMask);
                 if (skill3Hit)
                 {
-                    if(rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
+                    if(rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
                     {
-                        Debug.Log("스킬3 리턴");
                         return;
-                    }   
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
-                    {
-                        StartCoroutine(SKillBlink(2));
-                        rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
-                        skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
-                        rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
-                        stone.au.clip = stone.skillM[2];
-                        stone.au.Play();
-                        stone.buildPos = skill3Hit.collider.transform.position;
-                        rule.isblack = skill3Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
-                        nextTrun();
                     }
+                    StartCoroutine(SKillBlink(2));
+                    rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
+                    skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
+                    rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[2];
+                    stone.au.Play();
+                    stone.buildPos = skill3Hit.collider.transform.position;
+                    rule.isblack = skill3Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill3Hit.collider.transform.position;
+                    nextTrun();
                 }
                 else
                 {
@@ -196,58 +189,52 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
                 if (skill4Hit)
                 {
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
-                    {
-                        StartCoroutine(SKillBlink(3));
-                        rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + offsetX + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 2 : 1;
-                        skill4Hit.collider.transform.position = new Vector3(skill4Hit.collider.transform.position.x, skill4Hit.collider.transform.position.y - 1, 0);
-                        hit.collider.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, 0);
-                        rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + offsetX + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
-                        stone.au.clip = stone.skillM[3];
-                        stone.au.Play();
-                        stone.buildPos = skill4Hit.collider.transform.position;
-                        rule.isblack = skill4Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
-                        //nextTrun();
-                        stone.buildPos = hit.collider.transform.position;
-                        rule.isblack = hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
-                        //nextTrun();
-                        nextTrun();
-                    }
+                    StartCoroutine(SKillBlink(3));
+                    rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y +offsetY + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + offsetX+ 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 2 : 1;
+                    skill4Hit.collider.transform.position = new Vector3(skill4Hit.collider.transform.position.x, skill4Hit.collider.transform.position.y - 1, 0);
+                    hit.collider.transform.position = new Vector3(hit.collider.transform.position.x, hit.collider.transform.position.y + 1, 0);
+                    rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill4Hit.collider.transform.position.x+ offsetX + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
+                    stone.au.clip = stone.skillM[3];
+                    stone.au.Play();
+                    stone.buildPos = skill4Hit.collider.transform.position;
+                    rule.isblack = skill4Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    nextTrun();
+                    stone.buildPos = hit.collider.transform.position;
+                    rule.isblack = hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill4Hit.collider.transform.position;
+                    nextTrun();
                 }
                 else
                 {
                     return;
                 }
-                //nextTrun();
+                nextTrun();
             }
             if (skill5 && hit.collider.gameObject == gameObject && stone.blackCnt == 0 && stone.BlackOrWhite == 0 || skill5 && hit.collider.gameObject == gameObject && stone.WhiteCnt == 0 && stone.BlackOrWhite == 1)
             {
-                if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+                Instantiate(UmmYang,transform.position,UmmYang.transform.rotation);
+                stone.au.clip = stone.skillM[4];
+                stone.au.Play();
+                for (int i = 0; i < 19; i++)
                 {
-                    Instantiate(UmmYang, transform.position, UmmYang.transform.rotation);
-                    stone.au.clip = stone.skillM[4];
-                    stone.au.Play();
-                    for (int i = 0; i < 19; i++)
+                    RaycastHit2D skill5Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f, layerMask);
+                    if (skill5Hit && skill5Hit.collider.gameObject != gameObject)
                     {
-                        RaycastHit2D skill5Hit = Physics2D.Raycast(new Vector2(-8.5f + i, hit.transform.position.y), Vector3.forward, 100f, layerMask);
-                        if (skill5Hit && skill5Hit.collider.gameObject != gameObject)
-                        {
-                            rule.checkerboard[(int)((int)skill5Hit.collider.transform.position.y + 8.5f), (int)((int)skill5Hit.collider.transform.position.x + 8.5f)] = 0;
-                            Instantiate(Disappear.gameObject, skill5Hit.transform.position, Disappear.transform.rotation);
-                            Destroy(skill5Hit.collider.gameObject);
-                        }
+                        rule.checkerboard[(int)((int)skill5Hit.collider.transform.position.y + 8.5f), (int)((int)skill5Hit.collider.transform.position.x + 8.5f)] = 0;
+                        Instantiate(Disappear.gameObject, skill5Hit.transform.position, Disappear.transform.rotation);
+                        Destroy(skill5Hit.collider.gameObject);
                     }
-                    if (stone.BlackOrWhite == 0)
-                    {
-                        stone.blackCnt++;
-                    }
-                    else
-                    {
-                        stone.WhiteCnt++;
-                    }
-                    stone.GoldGee.SetActive(true);
-                    nextTrun();
                 }
+                if(stone.BlackOrWhite == 0)
+                {
+                    stone.blackCnt++;
+                }
+                else
+                {
+                    stone.WhiteCnt++;
+                }
+                stone.GoldGee.SetActive(true);
+                nextTrun();
             }
         }
         else
