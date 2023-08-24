@@ -116,6 +116,9 @@ public class Skills : MonoBehaviour
                     skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
                     rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1:2;
                     stone.au.clip = stone.skillM[0];
+                    stone.buildPos = skill1Hit.collider.transform.position;
+                    Debug.Log((int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f) + "," +  (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f));
+                    Debug.Log(rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f),(int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)]);
                     stone.au.Play();
                     stone.buildPos = skill1Hit.collider.transform.position;
                     rule.isblack = skill1Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
@@ -143,6 +146,7 @@ public class Skills : MonoBehaviour
                     stone.au.Play();
                     stone.buildPos = skill2Hit.collider.transform.position;
                     rule.isblack = skill2Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill2Hit.collider.transform.position;
                     nextTrun();
                 }
                 else
@@ -168,6 +172,7 @@ public class Skills : MonoBehaviour
                     stone.au.Play();
                     stone.buildPos = skill3Hit.collider.transform.position;
                     rule.isblack = skill3Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill3Hit.collider.transform.position;
                     nextTrun();
                 }
                 else
@@ -192,6 +197,7 @@ public class Skills : MonoBehaviour
                     nextTrun();
                     stone.buildPos = hit.collider.transform.position;
                     rule.isblack = hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                    stone.buildPos = skill4Hit.collider.transform.position;
                     nextTrun();
                 }
                 else

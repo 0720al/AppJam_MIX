@@ -28,7 +28,8 @@ public class RuleCheck : MonoBehaviour
         
 
         if(putting.put)
-        {   
+        {
+            Debug.Log("a");
             int j;
             for (int i = 4; i >= 0; i--) // 왼쪽으로 대각선(역슬래쉬)
             {
