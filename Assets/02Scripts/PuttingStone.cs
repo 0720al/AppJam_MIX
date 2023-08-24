@@ -34,6 +34,7 @@ public class PuttingStone : MonoBehaviour
     public GameObject[] skillGuide;
     GraphicRaycaster gr;
     GameObject pastSkillGuide;
+
     void Start()
     {
         gr = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GraphicRaycaster>();
