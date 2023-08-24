@@ -9,6 +9,7 @@ public class RuleCheck : MonoBehaviour
     public int Win = 2; //평소에는 2다
     bool check = false;
 
+    
     public int[,] checkerboard = new int[19,19];
     public int isblack;
     void Start()
@@ -17,15 +18,7 @@ public class RuleCheck : MonoBehaviour
     }
     void Update()
     {
-        //if (Input.GetKey(KeyCode.Mouse0))
-        //{
-        //    offsetX = mousePos.x >= 0 ? 0.5f : -0.5f;
-        //    offsetY = mousePos.y >= 0 ? 0.5f : -0.5f;
-        //    Vector3 bulidPos = new Vector3((int)mousePos.x + offsetX, (int)mousePos.y + offsetY);
-        //    //건물 건설
-        //    rule.checkerboard[(int)((int)mousePos.y + offsetY + 8.5f), (int)((int)mousePos.x + offsetX + 8.5f)] = BlackOrWhite + 1;
-        //}
-        
+
 
         if(putting.put)
         {
