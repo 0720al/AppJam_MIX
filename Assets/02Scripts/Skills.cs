@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Skills : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Skills : MonoBehaviour
     public RuleCheck rule;
     public float offsetX;
     public float offsetY;
+    public RawImage[] skills;
 
     GameObject semiC;
     bool skill1;
@@ -109,6 +111,8 @@ public class Skills : MonoBehaviour
                     if(rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 9.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 9.5f)] != 0)
                     {
                         Debug.Log("스킬1 리턴");
+                        Color skill1Color = skills[0].color;
+                        skill1Color.a = 0.5f;
                         return;
                     }
                     if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
@@ -264,5 +268,12 @@ public class Skills : MonoBehaviour
         stone.skillImgs[i].gameObject.SetActive(true);
         yield return new WaitForSeconds(0.2f);
         stone.skillImgs[i].gameObject.SetActive(false);
+    }
+    IEnumerator SkillAlphaLow(RawImage img)
+    {
+        Color skillColor = img.color;
+        skillColor.a = 0.5f;
+        yield return new WaitForSeconds(0.5f);
+        skillColor.a = 1f;
     }
 }

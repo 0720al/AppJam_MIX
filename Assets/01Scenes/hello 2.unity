@@ -1184,6 +1184,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.data[0]
+      value: 
+      objectReference: {fileID: 333787323}
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.data[1]
+      value: 
+      objectReference: {fileID: 209537140}
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.data[2]
+      value: 
+      objectReference: {fileID: 636312923}
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.data[3]
+      value: 
+      objectReference: {fileID: 184972711}
+    - target: {fileID: -4099166013100385983, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
+      propertyPath: skills.Array.data[4]
+      value: 
+      objectReference: {fileID: 184405248}
     - target: {fileID: 798314721463921525, guid: 66a31e8b2ab8f284592f19c432194055, type: 3}
       propertyPath: m_RootOrder
       value: 1
