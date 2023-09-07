@@ -118,9 +118,13 @@ public class Skills : MonoBehaviour
                     if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(0));
+                        offsetX = skill1Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill1Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
                         Debug.Log(skill1Hit.collider.transform.position.y);
                         skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
+                        offsetX = skill1Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill1Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = skill1Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
                         stone.au.clip = stone.skillM[0];
                         stone.au.Play();
@@ -147,8 +151,12 @@ public class Skills : MonoBehaviour
                     if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(1));
+                        offsetX = skill2Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill2Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
                         skill2Hit.collider.transform.position = new Vector3(skill2Hit.collider.transform.position.x, skill2Hit.collider.transform.position.y - 2, 0);
+                        offsetX = skill2Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill2Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] = skill2Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
                         stone.au.clip = stone.skillM[1];
                         stone.au.Play();
@@ -176,8 +184,12 @@ public class Skills : MonoBehaviour
                     if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(2));
+                        offsetX = skill3Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill3Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
                         skill3Hit.collider.transform.position = new Vector3(skill3Hit.collider.transform.position.x - 2, skill3Hit.collider.transform.position.y, 0);
+                        offsetX = skill3Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
+                        offsetY = skill3Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 8.5f)] = skill3Hit.collider.name == "BlackStone(Clone)" ? 1 : 2;
                         stone.au.clip = stone.skillM[2];
                         stone.au.Play();
