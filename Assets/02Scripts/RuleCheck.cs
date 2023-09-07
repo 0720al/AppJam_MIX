@@ -44,6 +44,7 @@ public class RuleCheck : MonoBehaviour
                 }
                 if(j >= 5)
                 {
+                    Debug.Log("aa");
                     Win = isblack; // WinÀÌ 0ÀÌ¸é Èæ ½Â, 1ÀÌ¸é ¹é ½Â
                     if (Win == 0)
                     {

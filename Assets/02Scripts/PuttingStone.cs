@@ -31,16 +31,10 @@ public class PuttingStone : MonoBehaviour
     public int WhiteCnt;
     public GameObject[] skillImgs;
 
-<<<<<<< Updated upstream
     public GameObject[] skillGuide;
     GraphicRaycaster gr;
     GameObject pastSkillGuide;
 
-=======
-    GraphicRaycaster gr;
-    public GameObject[] skillGuide;
-    GameObject pastSkillGuide;
->>>>>>> Stashed changes
     void Start()
     {
         gr = GameObject.FindGameObjectWithTag("MainCanvas").GetComponent<GraphicRaycaster>();
@@ -53,35 +47,6 @@ public class PuttingStone : MonoBehaviour
         beforeConfirmed();
         TimeLimit();
         EnterSkip();
-    }
-    void visibleGuide()
-    {
-        var ped = new PointerEventData(null);
-        ped.position = Input.mousePosition;
-        List<RaycastResult> results = new List<RaycastResult>();
-        gr.Raycast(ped, results);   
-        if (results.Count <= 0)
-        {
-            for (int i = 0; i < skillGuide.Length; i++)
-            {
-               skillGuide[i].gameObject.transform.GetChild(1).gameObject.SetActive(false);
-            }
-            return;
-        }
-        if (pastSkillGuide != null && results[0].gameObject != pastSkillGuide)
-        {
-            pastSkillGuide.transform.GetChild(1).gameObject.SetActive(false);
-            pastSkillGuide = null;
-        }
-        for (int i = 0; i < skillGuide.Length; i++)
-        {
-            if (results[0].gameObject == skillGuide[i])
-            {
-                pastSkillGuide = skillGuide[i].gameObject;
-                Debug.Log(skillGuide[i].gameObject.transform.GetChild(0).transform.localPosition);
-                skillGuide[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
-            }
-        }
     }
     void visibleGuide()
     {
