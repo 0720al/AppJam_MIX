@@ -47,6 +47,7 @@ public class PuttingStone : MonoBehaviour
         beforeConfirmed();
         TimeLimit();
         EnterSkip();
+
     }
     void visibleGuide()
     {
