@@ -96,7 +96,7 @@ public class Skills : MonoBehaviour
         }
         if (hit)
         {
-            if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+            if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
             {
                 stone.green.SetActive(true);
                 stone.green.transform.position = hit.collider.transform.position;
@@ -108,7 +108,7 @@ public class Skills : MonoBehaviour
                 Debug.Log(skill1Hit.collider.name);
                 if (skill1Hit)
                 {
-                    if(rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 9.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 9.5f)] != 0)
+                    if (rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 9.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 9.5f)] != 0)
                     {
                         Debug.Log("스킬1 리턴");
                         Color skill1Color = skills[0].color;
@@ -143,12 +143,12 @@ public class Skills : MonoBehaviour
                 RaycastHit2D skill2Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y - 0.6f), Vector2.down, 0.1f, layerMask);
                 if (skill2Hit)
                 {
-                    if(rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
+                    if (rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
                     {
                         Debug.Log("스킬2 리턴");
                         return;
                     }
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+                    if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(1));
                         offsetX = skill2Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
@@ -169,19 +169,19 @@ public class Skills : MonoBehaviour
                 {
                     return;
                 }
-                
+
             }
             if (skill3 && hit.collider.gameObject == gameObject)
             {
                 RaycastHit2D skill3Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x + 0.6f, hit.transform.position.y), Vector2.right, 0.1f, layerMask);
                 if (skill3Hit)
                 {
-                    if(rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
+                    if (rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
                     {
                         Debug.Log("스킬3 리턴");
                         return;
-                    }   
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+                    }
+                    if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(2));
                         offsetX = skill3Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
@@ -202,13 +202,13 @@ public class Skills : MonoBehaviour
                 {
                     return;
                 }
-            } 
+            }
             if (skill4 && hit.collider.gameObject == gameObject)
             {
-                RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x , hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
+                RaycastHit2D skill4Hit = Physics2D.Raycast(new Vector2(hit.transform.position.x, hit.transform.position.y + 0.6f), Vector2.up, 0.1f, layerMask);
                 if (skill4Hit)
                 {
-                    if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+                    if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                     {
                         StartCoroutine(SKillBlink(3));
                         rule.checkerboard[(int)((int)skill4Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill4Hit.collider.transform.position.x + offsetX + 8.5f)] = skill4Hit.collider.name == "BlackStone(Clone)" ? 2 : 1;
@@ -234,7 +234,7 @@ public class Skills : MonoBehaviour
             }
             if (skill5 && hit.collider.gameObject == gameObject && stone.blackCnt == 0 && stone.BlackOrWhite == 0 || skill5 && hit.collider.gameObject == gameObject && stone.WhiteCnt == 0 && stone.BlackOrWhite == 1)
             {
-                if(stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
+                if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
                 {
                     Instantiate(UmmYang, transform.position, UmmYang.transform.rotation);
                     stone.au.clip = stone.skillM[4];
