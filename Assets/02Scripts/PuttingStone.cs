@@ -73,7 +73,7 @@ public class PuttingStone : MonoBehaviour
             if (results[0].gameObject == skillGuide[i])
             {
                 pastSkillGuide = skillGuide[i].gameObject;
-                Debug.Log(skillGuide[i].gameObject.transform.GetChild(0).transform.localPosition);
+
                 skillGuide[i].gameObject.transform.GetChild(1).gameObject.SetActive(true);
             }
         }

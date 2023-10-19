@@ -84,9 +84,9 @@ public class Skills : MonoBehaviour
     }
     void StoneDetecte()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
+            Debug.Log("Aa");
             mousePos = Input.mousePosition;
             mousePos = Camera.main.ScreenToWorldPoint(mousePos);
             layerMask = 1 << LayerMask.NameToLayer("Stone");
@@ -121,7 +121,7 @@ public class Skills : MonoBehaviour
                         offsetX = skill1Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
                         offsetY = skill1Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
                         rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 8.5f)] = 0;
-                        Debug.Log(skill1Hit.collider.transform.position.y);
+                        
                         skill1Hit.collider.transform.position = new Vector3(skill1Hit.collider.transform.position.x + 1, skill1Hit.collider.transform.position.y + 1, 0);
                         offsetX = skill1Hit.collider.transform.position.x >= 0 ? 0.5f : -0.5f;
                         offsetY = skill1Hit.collider.transform.position.y >= 0 ? 0.5f : -0.5f;
@@ -129,7 +129,10 @@ public class Skills : MonoBehaviour
                         stone.au.clip = stone.skillM[0];
                         stone.au.Play();
                         stone.buildPos = skill1Hit.collider.transform.position;
+ 
                         rule.isblack = skill1Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                        stone.offsetX = offsetX;
+                        stone.offsetY = offsetY;    
                         nextTrun();
                     }
                 }
@@ -162,6 +165,8 @@ public class Skills : MonoBehaviour
                         stone.au.Play();
                         stone.buildPos = skill2Hit.collider.transform.position;
                         rule.isblack = skill2Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                        stone.offsetX = offsetX;
+                        stone.offsetY = offsetY;
                         nextTrun();
                     }
                 }
@@ -195,6 +200,8 @@ public class Skills : MonoBehaviour
                         stone.au.Play();
                         stone.buildPos = skill3Hit.collider.transform.position;
                         rule.isblack = skill3Hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                        stone.offsetX = offsetX;
+                        stone.offsetY = offsetY;
                         nextTrun();
                     }
                 }
@@ -222,6 +229,8 @@ public class Skills : MonoBehaviour
                         //nextTrun();
                         stone.buildPos = hit.collider.transform.position;
                         rule.isblack = hit.collider.name == "BlackStone(Clone)" ? 0 : 1;
+                        stone.offsetX = offsetX;
+                        stone.offsetY = offsetY;
                         //nextTrun();
                         nextTrun();
                     }
@@ -258,6 +267,7 @@ public class Skills : MonoBehaviour
                         stone.WhiteCnt++;
                     }
                     stone.GoldGee.SetActive(true);
+
                     nextTrun();
                 }
             }
