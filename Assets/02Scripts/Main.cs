@@ -21,7 +21,7 @@ public class Main : MonoBehaviour
     }
     public void startGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
     IEnumerator TextBlink()
     {
