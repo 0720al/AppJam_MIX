@@ -148,6 +148,12 @@ MonoBehaviour:
   rule: {fileID: 0}
   offsetX: 0
   offsetY: 0
-  cnt: 0
+  skills: []
   UmmYang: {fileID: 6271143800029637364, guid: 0c2fed8040366444eac9d13d7abaf23c, type: 3}
   Disappear: {fileID: 832247471195415406, guid: 3de0489dc45ce7e4aa9c48d94cce9378, type: 3}
+  stone: {fileID: 0}
+  goldGees:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

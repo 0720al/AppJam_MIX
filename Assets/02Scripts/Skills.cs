@@ -82,6 +82,12 @@ public class Skills : MonoBehaviour
         stone.trunOrder.color = stone.BlackOrWhite == 0 ? Color.white : Color.black;
         stone.timeFlow = 30;
     }
+    IEnumerator GoldGeeSetActive(int i)
+    {
+        stone.goldGees[i].SetActive(true);
+        yield return new WaitForSeconds(1f);
+        stone.goldGees[i].SetActive(false);
+    }
     void StoneDetecte()
     {
         if (Input.GetMouseButtonDown(0))
@@ -110,9 +116,9 @@ public class Skills : MonoBehaviour
                 {
                     if (rule.checkerboard[(int)((int)skill1Hit.collider.transform.position.y + offsetY + 9.5f), (int)((int)skill1Hit.collider.transform.position.x + offsetX + 9.5f)] != 0)
                     {
+                        StartCoroutine(GoldGeeSetActive(0));
+                        //stone.goldGees[0].SetActive(true);
                         Debug.Log("스킬1 리턴");
-                        Color skill1Color = skills[0].color;
-                        skill1Color.a = 0.5f;
                         return;
                     }
                     if (stone.BlackOrWhite == 0 && hit.collider.name == "BlackStone(Clone)" || stone.BlackOrWhite == 1 && hit.collider.name == "WhiteStone(Clone)")
@@ -148,6 +154,7 @@ public class Skills : MonoBehaviour
                 {
                     if (rule.checkerboard[(int)((int)skill2Hit.collider.transform.position.y + offsetY + 6.5f), (int)((int)skill2Hit.collider.transform.position.x + offsetX + 8.5f)] != 0)
                     {
+                        StartCoroutine(GoldGeeSetActive(1));
                         Debug.Log("스킬2 리턴");
                         return;
                     }
@@ -183,6 +190,7 @@ public class Skills : MonoBehaviour
                 {
                     if (rule.checkerboard[(int)((int)skill3Hit.collider.transform.position.y + offsetY + 8.5f), (int)((int)skill3Hit.collider.transform.position.x + offsetX + 6.5f)] != 0)
                     {
+                        StartCoroutine(GoldGeeSetActive(2));
                         Debug.Log("스킬3 리턴");
                         return;
                     }

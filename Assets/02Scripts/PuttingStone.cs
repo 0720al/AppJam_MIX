@@ -34,6 +34,7 @@ public class PuttingStone : MonoBehaviour
     public GameObject[] skillGuide;
     GraphicRaycaster gr;
     GameObject pastSkillGuide;
+    public GameObject[] goldGees;
 
     void Start()
     {
